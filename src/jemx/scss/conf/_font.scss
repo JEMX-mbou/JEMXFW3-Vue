@@ -1,0 +1,22 @@
+$font: (
+  'size': (
+    's': 16px,
+    'm': 18px,
+    'l': 20px,
+    'xl': 22px,
+    'xxl': 24px
+  ),
+  'heading': (
+    'h1': 3rem,
+    'h2': 2rem,
+    'h3': 1.8rem,
+    'h4': 1.5rem,
+    'h5': 1.2rem,
+    'h6': 1rem
+  ),
+  'line-height': 1.5em,
+  'family': (
+    'base': sans-serif,
+    'title': monospace
+  )
+);

@@ -1,0 +1,26 @@
+// @mixin theme-vars.generate
+// @description Generates CSS variables based on a theme color map
+// @param $map: map
+// @param $alternate: map|bool
+@mixin generate($map, $alternate: false) {
+  @each $key, $value in $map {
+    @if type-of($value) == 'color' or type-of($value) == 'string' {
+      --#{$key}: #{$value};
+
+      @if $alternate and map-has-key($alternate, $key) {
+        --#{$key}-alt: #{map-get($alternate, $key)};
+      }
+    } @else if type-of($value) == 'list' {
+      @for $i from 1 through length($value) {
+        --#{$key}-#{$i}: #{nth($value, $i)};
+      }
+    } @else if type-of($value) == 'map' {
+      @each $subKey, $subValue in $value {
+        --#{$key}-#{$subKey}: #{$subValue};
+      }
+    } @else {
+      @debug type-of($value);
+      @debug $value;
+    }
+  }
+}

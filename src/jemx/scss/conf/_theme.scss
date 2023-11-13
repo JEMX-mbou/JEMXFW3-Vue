@@ -1,0 +1,36 @@
+$theme: (
+  'font': (
+    'title': (
+      'Stint ultra Expanded',
+      serif
+    ),
+    'base': (
+      'Inconsolata',
+      monospace
+    )
+  ),
+  'dark': (
+    'background': #222,
+    'color': #ecf0f1,
+    'border': #ecf0f1,
+    'accent': (
+      #d916f2,
+      #27a4f2,
+      #f2cb05,
+      #f29f05,
+      #f25c05
+    )
+  ),
+  'light': (
+    'background': #ecf0f1,
+    'color': #222,
+    'border': #222,
+    'accent': (
+      #5664ea,
+      #6b8bff,
+      #fdcf80,
+      #f5b730,
+      #fd9807
+    )
+  )
+);

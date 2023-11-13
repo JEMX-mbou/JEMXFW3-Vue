@@ -1,0 +1,39 @@
+{
+  "name": "jemxfw3-vue",
+  "version": "0.0.1",
+  "description": "A frontend SCSS framework paired with Vue, a frontend js framework. ",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/",
+    "sass": "sass -w src/jemx:src/assets/jemx",
+    "min-sass": "sass -w src/jemx:src/assets/jemx --style=compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JEMX-mbou/JEMXFW3-Vue.git"
+  },
+  "keywords": [
+    "Frontend",
+    "SCSS",
+    "Vue"
+  ],
+  "author": "Jesse Malotaux <jemx@mboutrecht.nl>",
+  "dependencies": {
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.5"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@vitejs/plugin-vue": "^4.4.0",
+    "@vue/eslint-config-prettier": "^8.0.0",
+    "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "prettier": "^3.0.3",
+    "sass": "^1.69.5",
+    "vite": "^4.4.11"
+  }
+}
