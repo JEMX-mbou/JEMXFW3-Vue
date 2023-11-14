@@ -4,17 +4,29 @@
 // @param $identifier: string
 // @return string
 @function g($identifier) {
-  @if $identifier == 'bg' { $identifier: 'background' }
-  @else if $identifier == 'bg-a' { $identifier: 'background-alt' }
-  @else if $identifier == 'col' { $identifier: 'color' }
-  @else if $identifier == 'col-a' { $identifier: 'color-alt' }
-  @else if $identifier == 'bor' { $identifier: 'border' }
-  @else if $identifier == 'bor-a' { $identifier: 'border-a' }
-  @else if $identifier == 'a1' { $identifier: 'accent-1' }
-  @else if $identifier == 'a2' { $identifier: 'accent-2' }
-  @else if $identifier == 'a3' { $identifier: 'accent-3' }
-  @else if $identifier == 'a4' { $identifier: 'accent-4' }
-  @else if $identifier == 'a5' { $identifier: 'accent-5' }
+  @if $identifier == 'bg' {
+    $identifier: 'background';
+  } @else if $identifier == 'bg-a' {
+    $identifier: 'background-alt';
+  } @else if $identifier == 'col' {
+    $identifier: 'color';
+  } @else if $identifier == 'col-a' {
+    $identifier: 'color-alt';
+  } @else if $identifier == 'bor' {
+    $identifier: 'border';
+  } @else if $identifier == 'bor-a' {
+    $identifier: 'border-a';
+  } @else if $identifier == 'a1' {
+    $identifier: 'accent-1';
+  } @else if $identifier == 'a2' {
+    $identifier: 'accent-2';
+  } @else if $identifier == 'a3' {
+    $identifier: 'accent-3';
+  } @else if $identifier == 'a4' {
+    $identifier: 'accent-4';
+  } @else if $identifier == 'a5' {
+    $identifier: 'accent-5';
+  }
 
   @return var(--#{$identifier});
 }
