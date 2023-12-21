@@ -27,3 +27,6 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# JEMX test directories and files
+src/assets/Masthead/

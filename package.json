@@ -9,8 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "sass": "sass -w src/jemx:src/assets/jemx",
-    "min-sass": "sass -w src/jemx:src/assets/jemx --style=compressed"
+    "sass": "sass -w src/jemx/scss:public/jemx/css",
+    "min-sass": "sass -w src/jemx/scss:public/jemx/css --style=compressed"
   },
   "repository": {
     "type": "git",
