@@ -16,7 +16,7 @@
             <li><a href="">lange met ballen</a></li>
           </ul>
         </li>
-        <li><a href="">Test</a></li>
+        <li><a href="/test">Test</a></li>
       </ul>
     </div>
   </nav>
@@ -44,7 +44,7 @@ function openMenu() {
 
 @use '../scss/extend/pseudo';
 
-$breakpoint: 'm';
+$breakpoint: 's';
 $x-position: 'right'; // Options: left, right, false
 $animation-side: 'side'; // Options: top, side
 $size: 'auto';
