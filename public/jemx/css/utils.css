@@ -1,3 +1,180 @@
+/*
+ * Anim class
+ * Can be used for animating elements.
+ * Current sub classes: 
+ * - on-scroll, on-view
+ * - count-1, count-2, count-3, infinite
+ * - dur-03s, dur-05s, dur-1s, dur-2s, dur-3s
+ * - fade-in, fade-out
+ * - big-zoom-in, zoom-in, zoom-out
+ * - slide-in-left, slide-in-right, slide-out-left, slide-out-right 
+ */
+.anim {
+  animation-timing-function: ease-in;
+  /*
+   * Animation timeline
+   */
+  /*
+   * Animation ranges
+   */
+  /*
+   * Animation iterations
+   */
+  /*
+   * Animation durations
+   */
+  /*
+   * Fade animations
+   */
+  /*
+   * Zoom animations
+   */
+  /*
+   * Slide animations
+   */
+}
+.anim.on-scroll, .anim.on-view {
+  animation-fill-mode: forwards;
+}
+.anim.on-scroll {
+  animation-timeline: scroll();
+}
+.anim.on-view {
+  animation-timeline: view();
+}
+.anim.top-range {
+  animation-range-start: 0%;
+  animation-range-end: 60%;
+}
+.anim.center-range {
+  animation-range-start: 30%;
+  animation-range-end: 70%;
+}
+.anim.bottom-range {
+  animation-range-start: 40%;
+  animation-range-end: 100%;
+}
+.anim.count-1 {
+  animation-iteration-count: 1;
+}
+.anim.count-2 {
+  animation-iteration-count: 2;
+}
+.anim.count-3 {
+  animation-iteration-count: 3;
+}
+.anim.infinite {
+  animation-iteration-count: infinite;
+}
+.anim.dur-03s {
+  animation-duration: 0.3s;
+}
+.anim.dur-05s {
+  animation-duration: 0.5s;
+}
+.anim.dur-1s {
+  animation-duration: 1s;
+}
+.anim.dur-2s {
+  animation-duration: 2s;
+}
+.anim.dur-3s {
+  animation-duration: 3s;
+}
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+.anim.fade-in {
+  opacity: 0;
+  animation-name: fade-in;
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+  }
+}
+.anim.fade-out {
+  opacity: 1;
+  animation-name: fade-out;
+}
+@keyframes big-zoom-in {
+  50% {
+    scale: 0.8;
+  }
+  75% {
+    scale: 1;
+  }
+  100% {
+    scale: 0.5;
+  }
+}
+.anim.big-zoom-in {
+  scale: 0.5;
+  animation-name: big-zoom-in;
+}
+@keyframes zoom-in {
+  to {
+    scale: 1;
+  }
+}
+.anim.zoom-in {
+  scale: 0.5;
+  animation-name: zoom-in;
+}
+@keyframes zoom-out {
+  to {
+    scale: 2;
+  }
+}
+.anim.zoom-out {
+  scale: 1;
+  animation-name: zoom-out;
+}
+@keyframes slide-in-left {
+  to {
+    translate: 0 0;
+  }
+}
+.anim.slide-in-left {
+  translate: -200vw 0;
+  animation-name: slide-in-left;
+}
+@keyframes slide-in-right {
+  80% {
+    translate: 0 0;
+  }
+  100% {
+    translate: 0 0;
+  }
+}
+.anim.slide-in-right {
+  translate: 100vw 0;
+  animation-name: slide-in-right;
+}
+@keyframes slide-out-left {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -200vw 0;
+  }
+}
+.anim.slide-out-left {
+  translate: 0 0;
+  animation-name: slide-out-left;
+}
+@keyframes slide-out-right {
+  to {
+    translate: 200vw 0;
+  }
+}
+.anim.slide-out-right {
+  translate: 0 0;
+  animation-name: slide-out-right;
+}
+
 .border-thin {
   border: 1px solid #000;
 }
@@ -748,4 +925,20 @@
   margin-left: 5rem;
 }
 
-/*# sourceMappingURL=utilities.css.map */
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/*# sourceMappingURL=utils.css.map */

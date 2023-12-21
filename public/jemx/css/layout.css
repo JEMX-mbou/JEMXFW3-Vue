@@ -35,8 +35,8 @@
 .flex,
 .row,
 .col,
-[class^='col-'],
-[class*=' col-'] {
+[class^=col-],
+[class*=" col-"] {
   position: relative;
   display: flex;
 }
@@ -162,28 +162,35 @@
 }
 
 .row {
-  width: 100%;
   flex-wrap: wrap;
 }
 .row > * {
   flex-shrink: 0;
 }
 
-[class^='col-'],
-[class*=' col-'],
+[class^=col-],
+[class*=" col-"],
 .col {
   padding: 0.5rem;
-  flex: 0 0 auto;
   flex-direction: column;
 }
-[class^='col-'] > *,
-[class*=' col-'] > *,
+[class^=col-] > *,
+[class*=" col-"] > *,
 .col > * {
   display: flex;
   width: 100%;
   padding: 0.5rem;
   flex-direction: column;
   flex-wrap: wrap;
+}
+
+.col {
+  flex: 1;
+}
+
+[class^=col-],
+[class*=" col-"] {
+  flex: 0 0 auto;
 }
 
 .col-1 {

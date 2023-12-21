@@ -1,0 +1,35 @@
+@use '../utils/function/conf';
+@use '../utils/function/v';
+
+.bg-base {
+  background-color: v.g('bg');
+}
+.bg-base-alt {
+  background-color: v.g('bg-a');
+}
+.text-base {
+  color: v.g('col');
+}
+.text-base-alt {
+  color: v.g('col-a');
+}
+.border-base {
+  border-color: v.g('bor');
+}
+.border-base-alt {
+  border-color: v.g('bor-a');
+}
+
+@for $i from 1 through length(conf.get('theme.light.accent')) {
+  $color: v.g('a#{$i}');
+
+  .bg-accent-#{$i} {
+    background-color: $color;
+  }
+  .text-accent-#{$i} {
+    color: $color;
+  }
+  .border-accent-#{$i} {
+    border-color: $color;
+  }
+}
