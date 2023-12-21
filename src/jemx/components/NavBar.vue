@@ -142,6 +142,7 @@ nav {
       > ul {
         position: relative;
         translate: none;
+        min-width: 100%;
 
         li a {
           padding: spacer.get(1) spacer.get(2) spacer.get(1) spacer.get(4);
