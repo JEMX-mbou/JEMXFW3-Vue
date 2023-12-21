@@ -8,15 +8,18 @@
       </div>
       <ul ref="menu" class="jc-flex-start">
         <li><RouterLink to="/">Home</RouterLink></li>
+        <li><RouterLink to="/about">About</RouterLink></li>
         <li>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/features">Features</RouterLink>
           <ul>
-            <li><a href="">test</a></li>
-            <li><a href="">lorem test</a></li>
-            <li><a href="">lange met ballen</a></li>
+            <li><RouterLink to="/feature/base">Base</RouterLink></li>
+            <li><RouterLink to="/feature/conf">Conf</RouterLink></li>
+            <li><RouterLink to="/feature/extend">Extend</RouterLink></li>
+            <li><RouterLink to="/feature/layout">Layout</RouterLink></li>
+            <li><RouterLink to="/feature/theme">Theme</RouterLink></li>
+            <li><RouterLink to="/feature/utils">Utils</RouterLink></li>
           </ul>
         </li>
-        <li><a href="/test">Test</a></li>
       </ul>
     </div>
   </nav>
