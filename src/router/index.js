@@ -3,13 +3,6 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import FeatureView from '../views/FeatureView.vue'
 
-import BaseView from '../views/BaseView.vue'
-import ConfView from '../views/ConfView.vue'
-import ExtendView from '../views/ExtendView.vue'
-import LayoutView from '../views/LayoutView.vue'
-import ThemeView from '../views/ThemeView.vue'
-import UtilsView from '../views/UtilsView.vue'
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -22,10 +15,6 @@ const router = createRouter({
       path: '/about',
       name: 'about',
       component: AboutView
-      // component: () => import('../views/AboutView.vue')
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
     },
     {
       path: '/features',
@@ -35,32 +24,32 @@ const router = createRouter({
     {
       path: '/feature/base',
       name: 'feature-base',
-      component: BaseView
+      component: () => import('../views/BaseView.vue')
     },
     {
       path: '/feature/conf',
       name: 'feature-conf',
-      component: ConfView
+      component: () => import('../views/ConfView.vue')
     },
     {
       path: '/feature/extend',
       name: 'feature-extend',
-      component: ExtendView
+      component: () => import('../views/ExtendView.vue')
     },
     {
       path: '/feature/layout',
       name: 'feature-layout',
-      component: LayoutView
+      component: () => import('../views/LayoutView.vue')
     },
     {
       path: '/feature/theme',
       name: 'feature-theme',
-      component: ThemeView
+      component: () => import('../views/ThemeView.vue')
     },
     {
       path: '/feature/utils',
       name: 'feature-utils',
-      component: UtilsView
+      component: () => import('../views/UtilsView.vue')
     }
   ]
 })

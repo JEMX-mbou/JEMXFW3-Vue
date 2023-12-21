@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <main id="feature-base" class="container">
+    <h1>Base</h1>
+  </main>
 </template>
 
 <script setup></script>
