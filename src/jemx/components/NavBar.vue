@@ -1,17 +1,22 @@
 <template>
-  <nav>
+  <nav ref="nav">
+    <MenuIcon @click="openMenu()" />
     <div class="container">
-      <MenuIcon @click="openMenu()" />
-      <ul ref="menu" class="jc-space-around">
+      <div class="logo">
+        <img src="../../assets/jemx/jemxv3-logo.svg" alt="" />
+        <img class="mobile" src="../../assets/jemx/jemxv3-logo-small.svg" alt="" />
+      </div>
+      <ul ref="menu" class="jc-flex-start">
         <li><RouterLink to="/">Home</RouterLink></li>
         <li>
           <RouterLink to="/about">About</RouterLink>
-          <ul class="jc-flex-end">
+          <ul>
             <li><a href="">test</a></li>
             <li><a href="">lorem test</a></li>
             <li><a href="">lange met ballen</a></li>
           </ul>
         </li>
+        <li><a href="">Test</a></li>
       </ul>
     </div>
   </nav>
@@ -22,9 +27,11 @@ import { RouterLink } from 'vue-router'
 import MenuIcon from './MenuIcon.vue'
 import { ref } from 'vue'
 
+const nav = ref('')
 const menu = ref('')
 
 function openMenu() {
+  nav.value.classList.toggle('active')
   menu.value.classList.toggle('active')
 }
 </script>
@@ -35,7 +42,9 @@ function openMenu() {
 @use '../scss/utils/function/conf';
 @use '../scss/utils/function/font';
 
-$breakpoint: 'xxl';
+@use '../scss/extend/pseudo';
+
+$breakpoint: 'm';
 $x-position: 'right'; // Options: left, right, false
 $animation-side: 'side'; // Options: top, side
 $size: 'auto';
@@ -46,15 +55,63 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  height: auto;
   background-color: v.g('bg-a');
+  z-index: conf.get('layout.level.menu');
+
+  &::before {
+    @extend %pseudo;
+    inset: 0;
+    background-color: v.g('bg-a');
+    z-index: 1;
+  }
+  &.active {
+    height: auto;
+  }
+
+  #mobile-icon {
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .logo {
+    position: absolute;
+    inset: 0 50%;
+    translate: -50% 0;
+    width: fit-content;
+    padding: spacer.get(1);
+    z-index: 1;
+
+    img:not(.mobile) {
+      display: none;
+    }
+    img {
+      height: 2rem;
+    }
+  }
 
   ul {
     display: flex;
-    list-style: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     padding: 0;
     margin: 0;
-    flex-direction: column;
+    background: v.g('bg-a');
+    list-style: none;
+    translate: 0 -110%;
+    transition: translate 0.5s ease;
+
+    &.active {
+      translate: 0 0;
+    }
 
     li {
       position: relative;
@@ -63,39 +120,88 @@ nav {
 
       a {
         display: block;
-        padding: spacer.get(1);
+        padding: spacer.get(2);
         font-family: font.base();
         text-decoration: none;
-        color: v.g('a5');
-        background: v.g('bg-a');
+        color: v.g('a1');
+        text-wrap: nowrap;
         transition:
           color 0.3s ease-in,
           background 0.5s ease-in-out,
           opacity 0.5s ease-in-out;
 
         &:hover {
-          color: v.g('a1');
+          color: v.g('a5');
           background: #0001;
+        }
+      }
+
+      > ul {
+        position: relative;
+        translate: none;
+
+        li a {
+          padding: spacer.get(1) spacer.get(2) spacer.get(1) spacer.get(4);
+          font-size: 0.9em;
         }
       }
     }
   }
 
   @media screen and (min-width: conf.get('layout.breakpoint.#{$breakpoint}')) {
-    ul.jc-center li > ul,
-    ul li > ul.jc-center {
-      left: 50%;
-      translate: -50% 0;
-      text-align: center;
+    &::before {
+      content: none;
     }
-    ul.jc-flex-end li > ul,
-    ul li > ul.jc-flex-end {
-      right: 0;
-      text-align: right;
+
+    #mobile-icon {
+      display: none;
+    }
+
+    .logo {
+      position: relative;
+      inset: auto;
+      translate: none;
+
+      img:not(.mobile) {
+        display: block;
+      }
+      img.mobile {
+        display: none;
+      }
     }
 
     ul {
       flex-direction: row;
+      align-items: center;
+      position: relative;
+      translate: none;
+
+      li > ul,
+      &.jc-flex-start li > ul {
+        left: 0;
+        translate: none;
+        text-align: left;
+      }
+
+      &.jc-center,
+      &.jc-space-around,
+      &.jc-space-between,
+      &.jc-space-evenly {
+        li > ul {
+          left: 50%;
+          translate: -50% 0;
+          text-align: center;
+        }
+      }
+
+      &.jc-flex-end {
+        li > ul {
+          left: auto;
+          right: 0;
+          translate: none;
+          text-align: right;
+        }
+      }
 
       li {
         a {
@@ -116,15 +222,24 @@ nav {
           }
         }
 
+        &:hover > ul {
+          transform: translateY(0);
+        }
+
         > ul {
-          position: absolute;
-          top: 100%;
+          flex-wrap: wrap;
           flex-direction: column;
           align-items: stretch;
+          position: absolute;
+          width: fit-content;
+          top: 100%;
+          transform: translateY(calc(-100% - 3rem));
+          transition: transform 0.5s ease;
+          z-index: -1;
 
-          a {
+          li a {
+            padding: spacer.get(1);
             opacity: 0.9;
-            text-wrap: nowrap;
 
             &:hover {
               background: v.g('bg-a');

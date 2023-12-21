@@ -10,15 +10,18 @@
 import { ref } from 'vue'
 
 const icon = ref('')
-function iconClick(e) {
+
+function iconClick() {
   icon.value.classList.toggle('is-active')
-  // console.log(icon.value.classList)
 }
 </script>
 
 <style lang="scss" scoped>
 @use '../scss/utils/function/spacer';
 @use '../scss/utils/function/v';
+
+$icon-width: 2rem;
+$icon-height: 1rem;
 
 $icon-line-width: 2rem;
 $icon-line-height: 0.3rem;
@@ -37,8 +40,8 @@ $icon-line-spacing: 0.2rem;
   transition-timing-function: linear;
 
   .box {
-    width: 3rem;
-    height: 100%;
+    width: $icon-width;
+    height: $icon-height;
     display: inline-block;
     position: relative;
   }

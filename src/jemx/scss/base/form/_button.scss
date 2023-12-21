@@ -1,0 +1,57 @@
+@use '../../utils/function/spacer';
+@use '../../utils/function/conf';
+@use '../../utils/function/v';
+
+@use '../../extend/pseudo';
+
+button,
+input[type='submit'],
+input[type='reset'],
+input[type='button'] {
+  position: relative;
+  width: fit-content;
+  padding: spacer.get(1) spacer.get(3);
+  border-radius: conf.get('border.radius.small');
+  border: 2px solid;
+  font-size: 0.85em;
+  font-weight: bold;
+  cursor: pointer;
+
+  &::before {
+    @extend %pseudo;
+    inset: 0;
+    background-color: #000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  &:hover::before {
+    opacity: 0.3;
+  }
+
+  &:disabled,
+  &.disabled {
+    opacity: 0.8;
+  }
+
+  @for $i from 1 through length(conf.get('theme.light.accent')) {
+    $color: v.g('a#{$i}');
+
+    &.accent-#{$i} {
+      background-color: $color;
+      border-color: $color;
+
+      &.invert {
+        color: $color;
+
+        &::before {
+          background-color: $color;
+        }
+      }
+    }
+  }
+
+  &.invert {
+    background-color: transparent;
+  }
+}

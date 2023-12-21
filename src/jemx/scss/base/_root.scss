@@ -33,6 +33,8 @@ body {
   text-rendering: optimizeSpeed;
   line-height: conf.get('font.line-height');
   font-family: font.base();
+  color: v.g('col');
+  overflow-x: hidden;
 
   *,
   *::before,

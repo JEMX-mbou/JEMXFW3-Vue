@@ -16,12 +16,14 @@ figure {
   width: fit-content;
   max-width: 100%;
   margin: layout.spacer-value(1) 0;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   overflow: hidden;
 
-  img, 
-  picture { margin: 0 }
-  
+  img,
+  picture {
+    margin: 0;
+  }
+
   figcaption {
     padding: layout.spacer-value(1);
     font-style: italic;
@@ -30,7 +32,7 @@ figure {
 
 audio,
 video {
-  margin: layout.spacer-value(2) 0; 
+  margin: layout.spacer-value(2) 0;
 }
 
 audio::-webkit-media-controls-panel {

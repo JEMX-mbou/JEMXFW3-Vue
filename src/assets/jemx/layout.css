@@ -35,8 +35,8 @@
 .flex,
 .row,
 .col,
-[class^=col-],
-[class*=" col-"] {
+[class^='col-'],
+[class*=' col-'] {
   position: relative;
   display: flex;
 }
@@ -169,15 +169,15 @@
   flex-shrink: 0;
 }
 
-[class^=col-],
-[class*=" col-"],
+[class^='col-'],
+[class*=' col-'],
 .col {
   padding: 0.5rem;
   flex: 0 0 auto;
   flex-direction: column;
 }
-[class^=col-] > *,
-[class*=" col-"] > *,
+[class^='col-'] > *,
+[class*=' col-'] > *,
 .col > * {
   display: flex;
   width: 100%;
