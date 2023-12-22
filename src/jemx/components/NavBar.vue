@@ -7,17 +7,12 @@
         <img class="mobile" src="../../assets/jemx/jemxv3-logo-small.svg" alt="" />
       </div>
       <ul ref="menu" class="jc-flex-start">
-        <li><RouterLink to="/">Home</RouterLink></li>
-        <li><RouterLink to="/about">About</RouterLink></li>
-        <li>
-          <RouterLink to="/features">Features</RouterLink>
-          <ul>
-            <li><RouterLink to="/feature/base">Base</RouterLink></li>
-            <li><RouterLink to="/feature/conf">Conf</RouterLink></li>
-            <li><RouterLink to="/feature/extend">Extend</RouterLink></li>
-            <li><RouterLink to="/feature/layout">Layout</RouterLink></li>
-            <li><RouterLink to="/feature/theme">Theme</RouterLink></li>
-            <li><RouterLink to="/feature/utils">Utils</RouterLink></li>
+        <li v-for="route in routes" :key="route.id">
+          <RouterLink :to="route.path">{{ route.name }}</RouterLink>
+          <ul v-if="route.children">
+            <li v-for="subRoute in route.children" :key="subRoute.id">
+              <RouterLink :to="subRoute.path">{{ subRoute.name }}</RouterLink>
+            </li>
           </ul>
         </li>
       </ul>
@@ -26,12 +21,14 @@
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import MenuIcon from './MenuIcon.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const nav = ref('')
 const menu = ref('')
+
+const routes = useRouter().options.routes
 
 function openMenu() {
   nav.value.classList.toggle('active')
