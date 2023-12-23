@@ -1,7 +1,7 @@
 <template>
   <nav ref="nav">
     <MenuIcon @click="openMenu()" />
-    <div class="container">
+    <div class="container menu-container">
       <div class="logo">
         <img src="../../assets/jemx/jemxv3-logo.svg" alt="" />
         <img class="mobile" src="../../assets/jemx/jemxv3-logo-small.svg" alt="" />
@@ -17,12 +17,14 @@
         </li>
       </ul>
     </div>
+    <ThemeSwitch />
   </nav>
 </template>
 
 <script setup>
 import { useRouter, RouterLink } from 'vue-router'
 import MenuIcon from './MenuIcon.vue'
+import ThemeSwitch from './ThemeSwitch.vue'
 import { onMounted, ref } from 'vue'
 
 const nav = ref('')
@@ -51,6 +53,9 @@ $size: 'auto';
 $text-align: 'center';
 
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
@@ -92,6 +97,10 @@ nav {
     img {
       height: 2rem;
     }
+  }
+
+  .menu-container {
+    align-self: flex-end;
   }
 
   ul {
