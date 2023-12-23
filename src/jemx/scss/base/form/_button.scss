@@ -4,18 +4,24 @@
 
 @use '../../extend/pseudo';
 
+a:has(button) {
+  text-decoration: none;
+}
+
 button,
 input[type='submit'],
 input[type='reset'],
 input[type='button'] {
   position: relative;
   width: fit-content;
-  padding: spacer.get(1) spacer.get(3);
+  padding: spacer.get(1) spacer.get(4);
   border-radius: conf.get('border.radius.small');
   border: 2px solid;
   font-size: 0.85em;
   font-weight: bold;
   cursor: pointer;
+  text-decoration-style: none !important;
+  overflow: hidden;
 
   &::before {
     @extend %pseudo;
@@ -23,6 +29,7 @@ input[type='button'] {
     background-color: #000;
     opacity: 0;
     transition: opacity 0.5s ease;
+    z-index: 0;
   }
 
   &:hover::before {
