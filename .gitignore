@@ -30,3 +30,4 @@ coverage
 
 # JEMX test directories and files
 src/assets/Masthead/
+public/jemx/
