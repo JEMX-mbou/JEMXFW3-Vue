@@ -1,18 +1,29 @@
 @use '../utils/function/conf';
 @use '../utils/function/v';
 
+.standard-colors {
+  background-color: v.g('bg');
+  color: v.g('col');
+}
+.alt-colors {
+  background-color: v.g('bg-a');
+  color: v.g('col-a');
+}
+
 .bg-base {
   background-color: v.g('bg');
 }
 .bg-base-alt {
   background-color: v.g('bg-a');
 }
+
 .text-base {
   color: v.g('col');
 }
 .text-base-alt {
   color: v.g('col-a');
 }
+
 .border-base {
   border-color: v.g('bor');
 }
