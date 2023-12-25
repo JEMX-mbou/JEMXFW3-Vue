@@ -1,34 +1,38 @@
 <template>
   <nav ref="nav">
     <MenuIcon @click="openMenu()" />
-    <div class="container">
+    <div class="container menu-container">
       <div class="logo">
         <img src="../../assets/jemx/jemxv3-logo.svg" alt="" />
         <img class="mobile" src="../../assets/jemx/jemxv3-logo-small.svg" alt="" />
       </div>
       <ul ref="menu" class="jc-flex-start">
-        <li><RouterLink to="/">Home</RouterLink></li>
-        <li>
-          <RouterLink to="/about">About</RouterLink>
-          <ul>
-            <li><a href="">test</a></li>
-            <li><a href="">lorem test</a></li>
-            <li><a href="">lange met ballen</a></li>
+        <li v-for="route in routes" :key="route.id">
+          <RouterLink :to="route.path">{{ route.name }}</RouterLink>
+          <ul v-if="route.children">
+            <template v-for="subRoute in route.children" :key="subRoute.id">
+              <li v-if="subRoute.name != route.name">
+                <RouterLink :to="subRoute.path">{{ subRoute.name }}</RouterLink>
+              </li>
+            </template>
           </ul>
         </li>
-        <li><a href="/test">Test</a></li>
       </ul>
     </div>
+    <ThemeSwitch />
   </nav>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { useRouter, RouterLink } from 'vue-router'
 import MenuIcon from './MenuIcon.vue'
+import ThemeSwitch from './ThemeSwitch.vue'
 import { ref } from 'vue'
 
 const nav = ref('')
 const menu = ref('')
+
+const routes = useRouter().options.routes
 
 function openMenu() {
   nav.value.classList.toggle('active')
@@ -51,17 +55,22 @@ $size: 'auto';
 $text-align: 'center';
 
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: v.g('bg-a');
+  background-color: v.g('bg');
+  // border-bottom: 1px solid v.g('bor');
+  box-shadow: 0 -2rem 4rem v.g('bor');
   z-index: conf.get('layout.level.menu');
 
   &::before {
     @extend %pseudo;
     inset: 0;
-    background-color: v.g('bg-a');
+    background-color: v.g('bg');
     z-index: 1;
   }
   &.active {
@@ -94,6 +103,10 @@ nav {
     }
   }
 
+  .menu-container {
+    align-self: flex-end;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
@@ -104,7 +117,7 @@ nav {
     width: 100%;
     padding: 0;
     margin: 0;
-    background: v.g('bg-a');
+    background: v.g('bg');
     list-style: none;
     translate: 0 -110%;
     transition: translate 0.5s ease;
@@ -123,7 +136,7 @@ nav {
         padding: spacer.get(2);
         font-family: font.base();
         text-decoration: none;
-        color: v.g('a1');
+        color: v.g('col');
         text-wrap: nowrap;
         transition:
           color 0.3s ease-in,
@@ -131,18 +144,20 @@ nav {
           opacity 0.5s ease-in-out;
 
         &:hover {
-          color: v.g('a5');
-          background: #0001;
+          color: v.g('a3');
+          background: #0003;
         }
       }
 
       > ul {
         position: relative;
         translate: none;
+        min-width: 100%;
+        box-shadow: 0 0.3em 2rem -1.1em v.g('bor');
 
         li a {
-          padding: spacer.get(1) spacer.get(2) spacer.get(1) spacer.get(4);
           font-size: 0.9em;
+          line-height: 1.2em;
         }
       }
     }
@@ -207,18 +222,18 @@ nav {
         a {
           display: block;
           padding: spacer.get(1);
-          font-family: font.base();
-          text-decoration: none;
-          color: v.g('a5');
-          background: v.g('bg-a');
+          // font-family: font.base();
+          // text-decoration: none;
+          // color: v.g('a5');
+          // background: v.g('bg');
           transition:
             color 0.3s ease-in,
             background 0.5s ease-in-out,
             opacity 0.5s ease-in-out;
 
           &:hover {
-            color: v.g('a1');
-            background: #0001;
+            // color: v.g('a1');
+            // background: #0001;
           }
         }
 
@@ -232,17 +247,18 @@ nav {
           align-items: stretch;
           position: absolute;
           width: fit-content;
-          top: 100%;
-          transform: translateY(calc(-100% - 3rem));
+          top: calc(100% + 0.5rem);
+          transform: translateY(calc(-100% - 4rem));
           transition: transform 0.5s ease;
           z-index: -1;
 
           li a {
-            padding: spacer.get(1);
+            padding: spacer.get(0.5) spacer.get(1);
             opacity: 0.9;
 
             &:hover {
-              background: v.g('bg-a');
+              background: #0003;
+              color: v.g('a4');
               opacity: 1;
             }
           }

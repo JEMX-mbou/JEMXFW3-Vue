@@ -60,7 +60,7 @@ $icon-line-spacing: 0.2rem;
       position: absolute;
       width: 2rem;
       height: 0.2rem;
-      background-color: v.g('col-a');
+      background-color: v.g('col');
       transition-property: transform;
       transition-duration: 0.15s;
       transition-timing-function: ease;
