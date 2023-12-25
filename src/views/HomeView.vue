@@ -9,7 +9,7 @@
       contentClass="bottom bg-base text-center col-0"
       src="pexels-oleksandr-p-376368.jpg"
     >
-      <h1>JEMX <sup>v3</sup></h1>
+      <h1 class="pt-0 text-accent-2">JEMX <sup class="text-accent-5">v3</sup></h1>
       <p>
         Not very special or good,<br />
         but it'll get the job done.
