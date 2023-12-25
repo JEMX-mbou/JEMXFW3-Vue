@@ -25,22 +25,22 @@ h6 {
 }
 
 h1 {
-  font-size: conf.get('font.headings.h1');
+  font-size: conf.get('font.heading.h1');
 }
 h2 {
-  font-size: conf.get('font.headings.h2');
+  font-size: conf.get('font.heading.h2');
 }
 h3 {
-  font-size: conf.get('font.headings.h3');
+  font-size: conf.get('font.heading.h3');
 }
 h4 {
-  font-size: conf.get('font.headings.h4');
+  font-size: conf.get('font.heading.h4');
 }
 h5 {
-  font-size: conf.get('font.headings.h5');
+  font-size: conf.get('font.heading.h5');
 }
 h6 {
-  font-size: conf.get('font.headings.h6');
+  font-size: conf.get('font.heading.h6');
 }
 
 // # paragraph
