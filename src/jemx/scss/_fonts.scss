@@ -1,0 +1,16 @@
+@use 'utils/mixin/font';
+
+$fonts: (
+  'Teko': (
+    'normal': 'Light',
+    'bold': 'Medium'
+  ),
+  'Ubuntu': (
+    'normal': 'Light',
+    'normal-italic': 'LightItalic',
+    'bold': 'Bold',
+    'bold-italic': 'BoldItalic'
+  )
+);
+
+@include font.setFontFaces($fonts);
