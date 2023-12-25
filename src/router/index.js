@@ -18,10 +18,14 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/features',
+      path: '/feature',
       name: 'Features',
-      component: FeatureView,
       children: [
+        {
+          path: '',
+          name: 'Features',
+          component: FeatureView
+        },
         {
           path: '/feature/base',
           name: 'Base',

@@ -11,7 +11,7 @@
           <RouterLink :to="route.path">{{ route.name }}</RouterLink>
           <ul v-if="route.children">
             <template v-for="subRoute in route.children" :key="subRoute.id">
-              <li v-if="subRoute.name">
+              <li v-if="subRoute.name && subRoute.name != route.name">
                 <RouterLink :to="subRoute.path">{{ subRoute.name }}</RouterLink>
               </li>
             </template>
